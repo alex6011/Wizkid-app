@@ -1,10 +1,11 @@
 export class Wizkid{
 
-    _id!: string;
+    _id?: string;
     name!:string;
     email!:string;
     role!:Role;
     picture!:string;
+    password?:string;
 }
 
 

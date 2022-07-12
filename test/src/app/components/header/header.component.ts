@@ -4,20 +4,18 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(private router:Router) { }
+  ngOnInit(): void {}
+  viewAllWizkidz() {}
 
-  ngOnInit(): void {
+  addWizkid() {
+    this.router.navigate(['/newWizkid']);
   }
-  viewAllWizkidz(){
-
+  viewAllWizkids() {
+    this.router.navigate(['/base']);
   }
-
-  addWizkid(){
-      this.router.navigate(['/newWizkid']);
-  }
-
 }

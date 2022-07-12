@@ -9,7 +9,10 @@ import { WizkidItemComponent } from './components/wizkid-item/wizkid-item.compon
 import { HeaderComponent } from './components/header/header.component';
 import { NewWizkidComponent } from './containers/new-wizkid/new-wizkid.component';
 import { HttpClientModule } from "@angular/common/http";
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { LoginComponent } from './containers/login/login.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,12 +20,17 @@ import { HttpClientModule } from "@angular/common/http";
     WizkidListComponent,
     WizkidItemComponent,
     HeaderComponent,
-    NewWizkidComponent
+    NewWizkidComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [WizkidsService],
   bootstrap: [AppComponent]
