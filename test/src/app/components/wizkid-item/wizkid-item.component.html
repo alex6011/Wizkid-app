@@ -12,7 +12,7 @@
           <span>Name: {{ wizkid.name }}</span>
           <span>Role: {{ wizkid.role }}</span>
         </div>
-        <i class="icon-styling card fas fa-trash-alt"></i>
+        <i (click)="deleteUser(wizkid)" *ngIf="canDelete" class="icon-styling card fas fa-trash-alt"></i>
       </div>
     </div>
   </div>
