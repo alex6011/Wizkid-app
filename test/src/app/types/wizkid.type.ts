@@ -6,6 +6,7 @@ export class Wizkid{
     role!:Role;
     picture!:string;
     password?:string;
+    fired?:boolean;
 }
 
 

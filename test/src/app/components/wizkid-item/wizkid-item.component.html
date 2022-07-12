@@ -7,12 +7,16 @@
       <div class="d-flex flex-column w-100 gap-3">
         <div class="d-flex gap-2 flex-column">
           <span>Identifier: {{ wizkid._id }} </span>
-          <span>Role: {{ wizkid.email }}</span>
+          <span *ngIf="currentUser.value">Role: {{ wizkid.email }}</span>
           <span>{{ wizkid.picture }}</span>
           <span>Name: {{ wizkid.name }}</span>
           <span>Role: {{ wizkid.role }}</span>
         </div>
-        <i (click)="deleteUser(wizkid)" *ngIf="canDelete" class="icon-styling card fas fa-trash-alt"></i>
+        <div class="d-flex flex-row justify-content-between">
+          <i (click)="navigateToCustomize(wizkid)" class="icon-styling fs-6 fas fa-pen fa-lg"></i>
+
+          <ng-content></ng-content>
+        </div>
       </div>
     </div>
   </div>

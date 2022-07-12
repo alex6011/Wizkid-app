@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { WizkidsService } from 'src/app/services/wizkids.service';
 import { Wizkid } from 'src/app/types/wizkid.type';
@@ -15,7 +16,7 @@ export class WizkidItemComponent implements OnInit {
   public currentUser: BehaviorSubject<Wizkid> = new BehaviorSubject<Wizkid>(
     null
   );
-  constructor(private wizkidService: WizkidsService) {
+  constructor(private wizkidService: WizkidsService,private router:Router) {
     this.wizkidService.getCurrentUser().subscribe((data) => {
       this.isAuthenticated = data != null;
       if (data) {
@@ -26,16 +27,8 @@ export class WizkidItemComponent implements OnInit {
       }
     });
   }
-  deleteUser(wizkid: Wizkid) {
-    const checker = confirm(
-      'Are you sure? By proceeding this user will be lost forever...'
-    );
-    if (checker) {
-      this.wizkidService.deleteUser(wizkid._id).subscribe((data) => {});
-    } else {
-      return;
-    }
-  }
-
+  navigateToCustomize(wizkid:Wizkid){
+    this.router.navigate([`/user/${wizkid._id}`]);
+  } 
   ngOnInit(): void {}
 }

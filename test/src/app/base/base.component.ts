@@ -8,12 +8,12 @@ export class BaseComponent implements OnInit {
   public returnString?: any;
   public testArray: number[] = [];
   constructor() {}
-  arrayFunctionTest(testArray:number[]) {
+  arrayFunctionTest(testArray: number[]) {
     let lowestNumber = 1;
     let filteredArray: number[] = [];
     filteredArray = testArray.filter((data) => data > 0);
-    filteredArray.sort((a,b)=>a-b);
-   
+    filteredArray.sort((a, b) => a - b);
+
     for (let index = 0; index < filteredArray.length; index++) {
       if (lowestNumber < filteredArray[index]) {
         return lowestNumber;
@@ -26,14 +26,13 @@ export class BaseComponent implements OnInit {
     //  this.returnString = myNumber;
   }
 
-  testFunction(testArray:string[]){
-  
-    return   testArray.slice(2,4);
+  testFunction(testArray: string[]) {
+    return testArray.slice(2, 4);
   }
 
   ngOnInit(): void {
-  //  this.returnString = this.arrayFunctionTest([3,-38,5,26,-5]);
-    this.returnString = this.testFunction(['a','b','c','d','e','f']);
+    //  this.returnString = this.arrayFunctionTest([3,-38,5,26,-5]);
+    this.returnString = this.testFunction(['a', 'b', 'c', 'd', 'e', 'f']);
   }
 }
 

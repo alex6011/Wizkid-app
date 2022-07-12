@@ -13,6 +13,7 @@ export class WizkidsService {
   //private wizkidTest: Wizkid = new Wizkid();
   private wizKid: BehaviorSubject<Wizkid> ;
   private storage: Storage = sessionStorage;
+  
   getCurrentUser():BehaviorSubject<Wizkid> {
     return this.wizKid;
   }
@@ -29,6 +30,7 @@ export class WizkidsService {
   setLocalStorage() {
     this.storage.setItem('_User', JSON.stringify(this.wizKid.value));
   }
+ 
 
   async isLoggedIn(): Promise<boolean> {
    
@@ -55,6 +57,9 @@ deleteUser(id:string):Observable<any>{
           return response;
         })
       );
+  }
+  updateUser(){
+    
   }
   logout(): Observable<any> {
     return this.http.get(`${baseUrl}/logout`).pipe(

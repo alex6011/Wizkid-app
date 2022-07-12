@@ -12,7 +12,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { LoginComponent } from './containers/login/login.component'
+import { LoginComponent } from './containers/login/login.component';
+import { UserOverviewComponent } from './components/user-overview/user-overview.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { LoginComponent } from './containers/login/login.component'
     WizkidItemComponent,
     HeaderComponent,
     NewWizkidComponent,
-    LoginComponent
+    LoginComponent,
+    UserOverviewComponent
   ],
   imports: [
     BrowserModule,
