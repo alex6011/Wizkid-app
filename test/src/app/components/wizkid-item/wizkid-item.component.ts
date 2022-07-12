@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { WizkidsService } from 'src/app/services/wizkids.service';
 import { Wizkid } from 'src/app/types/wizkid.type';
-
 @Component({
   selector: 'app-wizkid-item',
   templateUrl: './wizkid-item.component.html',
@@ -16,7 +15,7 @@ export class WizkidItemComponent implements OnInit {
   public currentUser: BehaviorSubject<Wizkid> = new BehaviorSubject<Wizkid>(
     null
   );
-  constructor(private wizkidService: WizkidsService,private router:Router) {
+  constructor(private wizkidService: WizkidsService, private router: Router) {
     this.wizkidService.getCurrentUser().subscribe((data) => {
       this.isAuthenticated = data != null;
       if (data) {
@@ -27,11 +26,22 @@ export class WizkidItemComponent implements OnInit {
       }
     });
   }
-  fireUser(){
-
+  fireUser(userWizKid: Wizkid) {
+    if (userWizKid !== this.currentUser.value) {
+      const confirmation = confirm(
+        'Are you sure you want to fire this Wizkid ? You might regret it.'
+      );
+      if (confirmation) {
+        this.wizkidService
+          .fireOrUnfire(userWizKid._id, true)
+          .subscribe((data) => {});
+      } else {
+        return;
+      }
+    }
   }
-  navigateToCustomize(wizkid:Wizkid){
+  navigateToCustomize(wizkid: Wizkid) {
     this.router.navigate([`/user/${wizkid._id}`]);
-  } 
+  }
   ngOnInit(): void {}
 }

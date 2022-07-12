@@ -64,6 +64,11 @@ export class WizkidsService {
       password:this.getCurrentUser().value.password,
     });
   }
+  fireOrUnfire(userId:String,fired:boolean):Observable<any>{
+    return this.http.patch(`${baseUrl}.${userId}`,{
+      fired:fired,
+    })
+  }
   logout(): Observable<any> {
     return this.http.get(`${baseUrl}/logout`).pipe(
       map(() => {
