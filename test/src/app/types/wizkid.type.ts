@@ -1,4 +1,5 @@
 export class Wizkid{
+
     _id!: string;
     name!:string;
     email!:string;

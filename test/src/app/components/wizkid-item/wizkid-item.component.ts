@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Wizkid } from 'src/app/types/wizkid.type';
 
 @Component({
   selector: 'app-wizkid-item',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./wizkid-item.component.scss']
 })
 export class WizkidItemComponent implements OnInit {
-  @Input() wizkid:any;
+  @Input() wizkid!:Wizkid;
   constructor() { }
   ngOnInit(): void {
   }

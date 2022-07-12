@@ -5,7 +5,14 @@
       class="d-flex flex-column justify-content-between w-100"
     >
       <div class="d-flex flex-column w-100 gap-3">
-        <span>{{ wizkid }} </span> <i  class="icon-styling card fas fa-trash-alt"></i>
+        <div class="d-flex gap-2 flex-column">
+          <span>Identifier: {{ wizkid._id }} </span>
+          <span>Role: {{ wizkid.email }}</span>
+          <span>{{ wizkid.picture }}</span>
+          <span>Name: {{ wizkid.name }}</span>
+          <span>Role: {{ wizkid.role }}</span>
+        </div>
+        <i class="icon-styling card fas fa-trash-alt"></i>
       </div>
     </div>
   </div>
