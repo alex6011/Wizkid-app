@@ -29,7 +29,10 @@ export class WizkidListComponent implements OnInit {
 
   ngOnInit(): void {
     this.wizkidsService.getWizkids().subscribe((data: any) => {
-      this.wizkids.next(data.data.users);
+      const filteredItems = data.data.users;
+      const filter =  filteredItems.filter((x)=>x._id!==this.currentUser.value._id)
+      console.log(filter + '123');
+      this.wizkids.next(filter);
     });
   }
   deleteWizkid(wizkid: Wizkid) {
