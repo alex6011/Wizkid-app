@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { BaseComponent } from './base/base.component';
 import { WizkidListComponent } from './containers/wizkid-list/wizkid-list.component';
 import { WizkidItemComponent } from './components/wizkid-item/wizkid-item.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BaseComponent,
     WizkidListComponent,
-    WizkidItemComponent
+    WizkidItemComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
