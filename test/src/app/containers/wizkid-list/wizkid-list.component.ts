@@ -29,7 +29,6 @@ export class WizkidListComponent implements OnInit {
 
   ngOnInit(): void {
     this.wizkidsService.getWizkids().subscribe((data: any) => {
-      // console.log(data.data.users);
       this.wizkids.next(data.data.users);
     });
   }
