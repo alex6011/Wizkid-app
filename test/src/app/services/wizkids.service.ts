@@ -65,7 +65,7 @@ export class WizkidsService {
     });
   }
   fireOrUnfire(userId:String,fired:boolean):Observable<any>{
-    return this.http.patch(`${baseUrl}.${userId}`,{
+    return this.http.patch(`${baseUrl}/${userId}`,{
       fired:fired,
     })
   }

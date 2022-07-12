@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
 import { WizkidsService } from 'src/app/services/wizkids.service';
 import { Wizkid } from 'src/app/types/wizkid.type';
@@ -15,7 +16,8 @@ export class WizkidItemComponent implements OnInit {
   public currentUser: BehaviorSubject<Wizkid> = new BehaviorSubject<Wizkid>(
     null
   );
-  constructor(private wizkidService: WizkidsService, private router: Router) {
+  constructor(private wizkidService: WizkidsService, private router: Router,
+    private toastr:ToastrService) {
     this.wizkidService.getCurrentUser().subscribe((data) => {
       this.isAuthenticated = data != null;
       if (data) {
@@ -34,7 +36,25 @@ export class WizkidItemComponent implements OnInit {
       if (confirmation) {
         this.wizkidService
           .fireOrUnfire(userWizKid._id, true)
-          .subscribe((data) => {});
+          .subscribe((data) => {
+            this.toastr.success('You have fired your wizkid successfully!')
+          });
+      } else {
+        return;
+      }
+    }
+  }
+  unfireUser(userWizKid: Wizkid) {
+    if (userWizKid !== this.currentUser.value) {
+      const confirmation = confirm(
+        'Are you sure you want to unfire this Wizkid ? You might regret it.'
+      );
+      if (confirmation) {
+        this.wizkidService
+          .fireOrUnfire(userWizKid._id, false)
+          .subscribe((data) => {
+            this.toastr.success('You have unfired your wizkid successfully!')
+          });
       } else {
         return;
       }

@@ -6,6 +6,7 @@
     >
       <div class="d-flex flex-column w-100 gap-3">
         <div class="d-flex gap-2 flex-column">
+            <h3 *ngIf="wizkid.fired" class="color-dark fw-bolder">Fired</h3>
           <span>Identifier: {{ wizkid._id }} </span>
           <span *ngIf="currentUser.value">Role: {{ wizkid.email }}</span>
           <span>{{ wizkid.picture }}</span>
@@ -14,7 +15,8 @@
         </div>
         <div class="d-flex flex-row justify-content-between">
           <i *ngIf="isAuthenticated" (click)="navigateToCustomize(wizkid)" class="icon-styling fs-6 fas fa-pen fa-lg"></i>
-          <i (click)="fireUser(wizkid)" *ngIf="isAuthenticated && wizkid!==currentUser.value" class='fas fa-fire fa-lg icon-styling'></i>
+          <i (click)="fireUser(wizkid)" *ngIf="isAuthenticated && wizkid!==currentUser.value && !wizkid.fired" class='fas fa-fire fa-lg icon-styling'></i>
+          <i (click)="unfireUser(wizkid)" *ngIf="isAuthenticated && wizkid!==currentUser.value && wizkid.fired" class='fas fa-ban fa-lg icon-styling'></i>
           <ng-content></ng-content>
         </div>
       </div>
