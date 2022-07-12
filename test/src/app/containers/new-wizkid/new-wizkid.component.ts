@@ -12,7 +12,6 @@ import { Wizkid } from 'src/app/types/wizkid.type';
 export class NewWizkidComponent implements OnInit {
   public form!: FormGroup;
   public formPreview!: FormGroup;
-
   public showValidation!: boolean;
   get name(): FormControl {
     return this.form.get('name') as FormControl;

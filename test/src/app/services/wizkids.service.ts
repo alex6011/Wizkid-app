@@ -19,4 +19,7 @@ export class WizkidsService {
   registerWizkid(body:Wizkid):Observable<any>{
     return this.http.post(`${baseUrl}/signup`,body);
   }
+  login(){
+    
+  }
 }

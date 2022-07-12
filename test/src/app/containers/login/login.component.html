@@ -1,1 +1,50 @@
-<p>login works!</p>
+<div class="col-6 rounded-3 shadow">
+  <div class="justify-content-center d-flex my-3">
+    <h1 class="text-black">Wizkid</h1>
+  </div>
+  <form
+    [ngClass]="{ 'was-validated': showValidation }"
+    [formGroup]="form"
+    class="col-10 mx-auto flex-grow-1 vstack gap-3 pb-3"
+  >
+    <h4 class="fs-4 d-flex align-self-center">Log in to your account</h4>
+    <div class="form-group w-100">
+      <label>Email</label>
+      <div class="input-group d-flex">
+        <label class="input-group-text">
+          <i class="fas fa-user"></i>
+        </label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          placeholder="Email"
+          formControlName="email"
+        />
+      </div>
+    </div>
+    <div class="form-group w-100">
+      <label for="">Password</label>
+      <div class="input-group d-flex">
+        <label class="input-group-text">
+          <i class="fas fa-key"></i>
+        </label>
+        <input
+          required
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          formControlName="password"
+        />
+      </div>
+    </div>
+    <button class="btn btn-primary w-100 mb-2 button-style" type="submit">
+      Login
+    </button>
+
+    <button class="btn btn-primary w-100 mb-2 button-style" type="submit">
+      Logout
+    </button>
+    <div class="mb-2 line-separator"></div>
+  </form>
+</div>

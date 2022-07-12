@@ -1,16 +1,7 @@
-.my-button{
+.button-style{
+    min-width:10rem;
+    background:darkcyan;
+    outline:none;
     border:none;
-    padding:1rem;
-    min-width:50%;
-    background:orangered;
-    color:lightblue;
-    transition: all .3s ease-in-out;
-    border-radius:5px;
-
-    cursor:pointer;
-    &:hover{
-        transform:scale(1.1);
-        
-    }
     
 }
