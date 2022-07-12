@@ -27,6 +27,9 @@ export class WizkidItemComponent implements OnInit {
       }
     });
   }
+  fireUser(){
+
+  }
   navigateToCustomize(wizkid:Wizkid){
     this.router.navigate([`/user/${wizkid._id}`]);
   } 
