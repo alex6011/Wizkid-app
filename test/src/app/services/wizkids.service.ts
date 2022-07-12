@@ -61,6 +61,7 @@ export class WizkidsService {
       name: name,
       email: email,
       role: role,
+      password:this.getCurrentUser().value.password,
     });
   }
   logout(): Observable<any> {

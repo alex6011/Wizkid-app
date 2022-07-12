@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { WizkidsService } from 'src/app/services/wizkids.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,8 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private wizKidzService:WizkidsService,
-    private router:Router
+    private wizKidzService: WizkidsService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +31,6 @@ export class LoginComponent implements OnInit {
       email: new FormControl(''),
       password: new FormControl(''),
     });
-    console.log(this.wizKidzService.getCurrentUser() + '4545938');
   }
   login() {
     if (this.form.invalid) {
@@ -44,12 +42,13 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.showValidation = false;
-    this.wizKidzService.login(this.password.value,this.email.value).subscribe((data)=>{
-      console.log(this.wizKidzService.getCurrentUser() + '4545938');
-      if(data){
-        this.toastr.success('Logged in successfully');
-        this.router.navigate(['/base']);
-      }
-    })
+    this.wizKidzService
+      .login(this.password.value, this.email.value)
+      .subscribe((data) => {
+        if (data) {
+          this.toastr.success('Logged in successfully');
+          this.router.navigate(['/base']);
+        }
+      });
   }
 }

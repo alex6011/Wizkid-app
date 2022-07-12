@@ -57,7 +57,6 @@ export class NewWizkidComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       name: new FormControl(''),
-
       email: new FormControl(''),
       role: new FormControl(''),
       password:new FormControl(''),
