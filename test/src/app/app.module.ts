@@ -8,6 +8,7 @@ import { WizkidListComponent } from './containers/wizkid-list/wizkid-list.compon
 import { WizkidItemComponent } from './components/wizkid-item/wizkid-item.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NewWizkidComponent } from './containers/new-wizkid/new-wizkid.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NewWizkidComponent } from './containers/new-wizkid/new-wizkid.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [WizkidsService],
   bootstrap: [AppComponent]

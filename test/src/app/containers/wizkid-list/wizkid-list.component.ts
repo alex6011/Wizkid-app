@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WizkidsService } from 'src/app/services/wizkids.service';
 
 @Component({
   selector: 'app-wizkid-list',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WizkidListComponent implements OnInit {
   public wizkids = ['wizkid1','wizkid2','wizkid3'];
-  constructor() { }
+  constructor(private wizkidsService:WizkidsService) { }
 
   ngOnInit(): void {
+    this.wizkidsService.getWizkids().subscribe((data)=>{
+      console.log(data);
+    })
   }
 
 }
