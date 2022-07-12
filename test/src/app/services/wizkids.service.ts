@@ -11,10 +11,10 @@ const baseUrl = '/api/v1/users';
 })
 export class WizkidsService {
   //private wizkidTest: Wizkid = new Wizkid();
-  private wizKid: BehaviorSubject<Wizkid> ;
+  private wizKid: BehaviorSubject<Wizkid>;
   private storage: Storage = sessionStorage;
-  
-  getCurrentUser():BehaviorSubject<Wizkid> {
+
+  getCurrentUser(): BehaviorSubject<Wizkid> {
     return this.wizKid;
   }
   constructor(private http: HttpClient, private router: Router) {
@@ -30,15 +30,13 @@ export class WizkidsService {
   setLocalStorage() {
     this.storage.setItem('_User', JSON.stringify(this.wizKid.value));
   }
- 
 
   async isLoggedIn(): Promise<boolean> {
-   
     return this.wizKid.value != null;
-}
-deleteUser(id:string):Observable<any>{
-  return this.http.delete<any>(`${baseUrl}/deleteMe/${id}`)
-}
+  }
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete<any>(`${baseUrl}/deleteMe/${id}`);
+  }
   getWizkids(): Observable<any[]> {
     return this.http.get<any[]>(`${baseUrl}`);
   }
@@ -58,8 +56,12 @@ deleteUser(id:string):Observable<any>{
         })
       );
   }
-  updateUser(){
-    
+  updateUser(userId: String, email?: String, name?: String, role?: String):Observable<any> {
+    return this.http.patch(`${baseUrl}/${userId}`, {
+      name: name,
+      email: email,
+      role: role,
+    });
   }
   logout(): Observable<any> {
     return this.http.get(`${baseUrl}/logout`).pipe(
@@ -69,5 +71,8 @@ deleteUser(id:string):Observable<any>{
         this.router.navigate(['/login']);
       })
     );
+  }
+  getUser(userId):Observable<Wizkid>{
+    return this.http.get<Wizkid>(`${baseUrl}/${userId}`);
   }
 }

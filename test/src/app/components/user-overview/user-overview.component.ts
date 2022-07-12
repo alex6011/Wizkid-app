@@ -20,6 +20,16 @@ export class UserOverviewComponent implements OnInit {
     null
   );
   public paramId: string;
+  get name(): FormControl {
+    return this.form.get('name') as FormControl;
+  }
+  get email(): FormControl {
+    return this.form.get('email') as FormControl;
+  }
+  get role(): FormControl {
+    return this.form.get('role') as FormControl;
+  }
+
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
@@ -28,22 +38,50 @@ export class UserOverviewComponent implements OnInit {
   ) {
     this.route.params.subscribe((data) => {
       this.paramId = data['id'];
-      console.log(this.paramId);
+
     });
   }
-  submitForm() {}
+  submitForm() {
+    const data = {
+      name: this.name.value,
+      email: this.email.value,
+      role: this.role.value,
+    };
+    if (!data.name) {
+      data.name = this.currentUser.value.name;
+    }
+    if (!data.email) {
+      data.email = this.currentUser.value.email;
+    }
+    if (!data.role) {
+      data.role = this.currentUser.value.role;
+    }
+    this.wizkidsService
+      .updateUser(this.paramId, data.email, data.name, data.role)
+      .subscribe((data) => {
+        if (data) {
+          this.toastr.success('Data successfully changed !');
+        } else {
+          this.toastr.error('Data was not changed successfully ...');
+        }
+      });
+  }
   ngOnInit(): void {
+    
     this.form = this.formBuilder.group({
       name: new FormControl(''),
       email: new FormControl(''),
       role: new FormControl(''),
-      password: new FormControl(''),
+
     });
-    this.wizkidsService.getCurrentUser().subscribe((data) => {
-      this.isAuthenticated = data != null;
-      if (data) {
-        this.currentUser.next(data);
-      }
-    });
+    this.wizkidsService.getUser(this.paramId).subscribe((data:any)=>{
+      this.currentUser.next(data.data.user);
+    })
+    // this.wizkidsService.getCurrentUser().subscribe((data) => {
+    //   this.isAuthenticated = data != null;
+    //   if (data) {
+    //     this.currentUser.next(data);
+    //   }
+    // });
   }
 }
