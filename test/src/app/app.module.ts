@@ -7,6 +7,7 @@ import { BaseComponent } from './base/base.component';
 import { WizkidListComponent } from './containers/wizkid-list/wizkid-list.component';
 import { WizkidItemComponent } from './components/wizkid-item/wizkid-item.component';
 import { HeaderComponent } from './components/header/header.component';
+import { NewWizkidComponent } from './containers/new-wizkid/new-wizkid.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { HeaderComponent } from './components/header/header.component';
     BaseComponent,
     WizkidListComponent,
     WizkidItemComponent,
-    HeaderComponent
+    HeaderComponent,
+    NewWizkidComponent
   ],
   imports: [
     BrowserModule,

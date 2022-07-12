@@ -1,0 +1,21 @@
+.hover-card {
+  transition: all 0.3s;
+  &:hover {
+    .card {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+.card {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.icon-styling{
+    cursor:pointer;
+    border:none;
+    color:orangered !important;
+    transition: all .3s;
+}
