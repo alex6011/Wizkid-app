@@ -1,5 +1,5 @@
 <div class="d-flex flex-column gap-4">
     <app-wizkid-item  *ngFor="let x of wizkids.value" [wizkid]="x">
-        <i (click)="deleteWizkid(x)"  class="icon-styling card fas fa-trash-alt"></i>
+        <i *ngIf="isAuthenticated" (click)="deleteWizkid(x)"  class="icon-styling card fas fa-trash-alt"></i>
     </app-wizkid-item>
 </div>
